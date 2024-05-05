@@ -1,0 +1,602 @@
+@use "sass:math";
+
+$BaseWindowColor: #E5F9F9;
+$BaseContentColor: #fff;
+$MainTitleBarHoverColor: #E9E9E9;
+$BaseFontColor: #000;
+$BaseScrollColor: rgba(0, 0, 0, .25);
+$BaseScrollHoverColor: rgba(0, 0, 0, .4);
+$BaseVersionFontColor: #7a7d7e;
+$BaseFontSize: 14px;
+$BaseMenuBorderColor: #4098fc;
+$BaseMenuHoverColor: #e8eaf0;
+$BaseBodyBorderColor: #EAE5D6;
+$BaseCardColor: #fff; // Card背景色
+$BaseCardActionColor: #FAFAFC; // Card Action 颜色
+$BaseCardTitleColor: rgb(31, 34, 37); // Card Title Color
+$BaseCardBorderColor: #efeff5;
+$BaseFontFamily: "Microsoft YaHei";
+$BaseButtonFontColor: rgb(51, 54, 57);
+
+$alpha1: 0.82;
+$alpha2: 0.72;
+$alpha3: 0.38;
+$alpha4: 0.24; // disabled text, placeholder, icon
+$alpha5: 0.18; // disabled placeholder
+
+$alphaDisabled: 0.5;
+$alphaDisabledInput: 0.02;
+$alphaPending: 0.05;
+$alphaTablePending: 0.02;
+$alphaPressed: 0.13;
+$alphaHover: 0.09;
+
+// tertiary
+$tertiaryDefault: rgba(38, 108, 179, $alphaPending);
+$tertiaryHover: rgba(46, 51, 56, $alphaHover);
+$tertiaryPressed: rgba(46, 51, 56, $alphaPressed);
+
+// default
+$DefaultHover: rgba(96, 168, 241, $alphaHover);
+$DefaultActive: rgba(96, 168, 241, $alphaPressed);
+$DefaultDefault: rgba(96, 168, 241, $alphaPending);
+$DefaultBorder: #e0e0e6;
+$DefaultBorderHover: #36AD6A;
+$DefaultActiveHover: #0c7a43;
+
+// tertiary
+$TertiaryHover: rgba(96, 168, 241, $alphaHover);
+$TertiaryActive: rgba(96, 168, 241, $alphaPressed);
+$TertiaryDefault: rgba(96, 168, 241, $alphaPending);
+$TertiaryBorder: #e0e0e6;
+$TertiaryBorderHover: #36AD6A;
+$TertiaryActiveHover: #0c7a43;
+$TertiaryFontColor: #767c82;
+
+
+// info
+$InfoHover: #4098fc;
+$InfoDefault: #2080f0;
+$InfoActive: #1060c9;
+
+// error
+$ErrorHover: #de576d;
+$ErrorDefault: #d03050;
+$ErrorActive: #ab1f3f;
+
+// warning
+$WarningHover: #fcb040;
+$WarningDefault: #f0a020;
+$WarningActive: #c97c10;
+
+// success
+$SuccessHover: #36ad6a;
+$SuccessDefault: #18a058;
+$SuccessActive: #0c7a43;
+
+
+* {
+  font-family: $BaseFontFamily;
+  font-size: $BaseFontSize;
+}
+
+QPushButton, QWidget {
+  border: none;
+  outline: none;
+  background: none;
+}
+
+QLabel {
+  background-color: #0000;
+}
+
+// collapse
+#main-collapse::item {
+  //min-height: 30px;
+  height: auto;
+  border-top: 1px solid rgb(239, 239, 245);
+  color: $BaseButtonFontColor;
+  outline: none;
+  font-size: 20px;
+}
+
+// carousel
+[name="main-carousel-dots"] {
+  background: rgba(255, 255, 255, .3);
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+
+  &:hover {
+    background: rgba(255, 255, 255, .6);
+  }
+}
+
+[name="main-carousel-controls"] {
+  background: rgba(255, 255, 255, .2);
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 1400;
+  font-size: 18px;
+  text-align: center;
+  padding-bottom: 5px;
+
+  &:hover {
+    background: rgba(255, 255, 255, .4);
+  }
+  &:pressed {
+    background: rgba(255, 255, 255, .1);
+  }
+}
+
+// Button
+//noinspection CssInvalidPseudoSelector
+#main-button {
+  border-radius: 3px;
+  border: 1px solid $DefaultBorder;
+  padding: 2px 14px;
+  height: 34px;
+  color: $BaseButtonFontColor;
+  $ButtonType: (
+                  (info, $InfoDefault, $InfoHover, $InfoActive),
+                  (success, $SuccessDefault, $SuccessHover, $SuccessActive),
+                  (warning, $WarningDefault, $WarningHover, $WarningActive),
+                  (error, $ErrorDefault, $ErrorHover, $ErrorActive)
+  );
+  $ButtonSize: (
+                  (small, 28px, 10px),
+                  (medium, 34px, 14px),
+                  (large, 40px, 18px),
+  );
+
+  &:disabled {
+    background: #0000;
+    color: rgba($BaseFontColor, $alphaDisabled);
+    border: 1px solid #e0e0e6;
+  }
+
+  &[type='text'] {
+    padding: 0;
+    border: none;
+    border-radius: 0;
+
+    &:hover {
+      color: $DefaultBorderHover;
+    }
+
+    &:disabled {
+      background: #0000;
+      color: rgba($BaseFontColor, $alphaDisabled);
+    }
+  }
+
+  &[Round="true"] {
+    border-radius: 17px;
+  }
+
+  &[type="default"]:hover {
+    border-color: $DefaultBorderHover;
+    color: $DefaultBorderHover;
+  }
+
+  &:pressed {
+    border-color: $DefaultActiveHover;
+    color: $DefaultActiveHover;
+  }
+
+  &[type="tertiary"] {
+    border-color: $DefaultBorder;
+    color: $TertiaryFontColor;
+
+    &:hover {
+      border-color: $TertiaryBorderHover;
+      color: $TertiaryBorderHover;
+    }
+
+    &:pressed {
+      border-color: $TertiaryActiveHover;
+      color: $TertiaryActiveHover;
+    }
+
+    &:disabled {
+      background: #0000;
+      color: rgba($BaseFontColor, $alphaDisabled);
+      border: 1px solid #e0e0e6;
+    }
+  }
+
+  &[type="secondary-default"] {
+    border: none;
+    background-color: $DefaultDefault;
+
+    &:hover {
+      background-color: $DefaultHover;
+      color: $BaseButtonFontColor;
+    }
+
+    &:pressed {
+      background-color: $DefaultActive;
+    }
+
+    &:disabled {
+      background: #0000;
+      color: rgba($BaseFontColor, $alphaDisabled);
+      border: 1px solid #e0e0e6;
+    }
+  }
+
+  &[type="dashed-default"] {
+
+    &:hover {
+      border-color: $DefaultBorderHover;
+      color: $DefaultBorderHover;
+    }
+
+    &:pressed {
+      border-color: $DefaultActiveHover;
+      color: $DefaultActiveHover;
+    }
+
+    &:disabled {
+      background: #0000;
+      color: rgba($BaseFontColor, $alphaDisabled);
+      border: 1px solid #e0e0e6;
+    }
+  }
+
+  &[type|="tertiary"] {
+    border: none;
+    background-color: $tertiaryDefault;
+
+    &:hover {
+      background-color: $tertiaryHover;
+    }
+
+    &:pressed {
+      background-color: $tertiaryPressed;
+    }
+  }
+
+  &[type="tertiary-tertiary"] {
+    color: $TertiaryFontColor;
+  }
+
+  &[type|="dashed"] {
+    border: 2px dashed $DefaultBorder;
+  }
+
+  &[type="secondary-tertiary"] {
+    border: none;
+    background-color: $TertiaryDefault;
+    color: $TertiaryFontColor;
+
+    &:hover {
+      background-color: $TertiaryHover;
+    }
+
+    &:pressed {
+      background-color: $TertiaryActive;
+    }
+
+    &:disabled {
+      background: #0000;
+      color: rgba($BaseFontColor, $alphaDisabled);
+      border: 1px solid #e0e0e6;
+    }
+  }
+
+  &[type="dashed-tertiary"] {
+
+    &:hover {
+      border-color: $TertiaryBorderHover;
+      color: $TertiaryBorderHover;
+    }
+
+    &:pressed {
+      border-color: $TertiaryActiveHover;
+      color: $TertiaryActiveHover;
+    }
+
+    &:disabled {
+      background: #0000;
+      color: rgba($BaseFontColor, $alphaDisabled);
+      border: 1px solid #e0e0e6;
+    }
+  }
+
+  &[Strong='true'] {
+    font-weight: 600;
+  }
+
+  @each $name, $default, $hover, $action in $ButtonType {
+    &[type="#{$name}"] {
+      border: none;
+      color: lighten($BaseFontColor, 100%);
+      background-color: $default;
+
+      &:hover {
+        color: lighten($BaseFontColor, 100%);
+        background-color: $hover;
+      }
+
+      &:pressed {
+        color: lighten($BaseFontColor, 100%);
+        background-color: $action;
+      }
+
+      &:disabled {
+        background: #0000;
+        color: rgba($BaseFontColor, $alphaDisabled);
+        border: 1px solid #e0e0e6;
+      }
+    }
+    &[type="secondary-#{$name}"] {
+      border: none;
+      color: $default;
+      background-color: rgba($default, .16);
+
+      &:hover {
+        background-color: rgba($default, .22);
+      }
+
+      &:pressed {
+        background-color: rgba($default, .28);
+      }
+
+      &:disabled {
+        background: #0000;
+        color: rgba($BaseFontColor, $alphaDisabled);
+        border: 1px solid #e0e0e6;
+      }
+    }
+    &[type="dashed-#{$name}"] {
+      border-color: $default;
+      color: $default;
+
+      &:hover {
+        border-color: $hover;
+        color: $hover;
+      }
+
+      &:pressed {
+        border-color: $action;
+        color: $action;
+      }
+
+      &:disabled {
+        background: #0000;
+        color: rgba($BaseFontColor, $alphaDisabled);
+        border: 1px solid #e0e0e6;
+      }
+    }
+    &[type="tertiary-#{$name}"] {
+      color: $hover;
+
+      &:disabled {
+        background: #0000;
+        color: rgba($BaseFontColor, $alphaDisabled);
+        border: 1px solid #e0e0e6;
+      }
+    }
+  }
+
+  @each $size, $height, $padding in $ButtonSize {
+    &[Size="#{$size}"] {
+      height: $height;
+      padding: 2px $padding;
+
+      &[Round="true"] {
+        border-radius: math.div($height, 2);
+      }
+    }
+
+  }
+}
+
+// MainWindow
+#main-window {
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  background: $BaseWindowColor;
+}
+
+// MainSideBar
+
+#menu-item {
+  border-radius: 4px;
+  border: none;
+  outline: none;
+
+  &[type=select] {
+    border-left: 3px solid $BaseMenuBorderColor;
+    background-color: $BaseMenuHoverColor;
+  }
+
+  &:hover {
+    background: $BaseMenuHoverColor;
+  }
+}
+
+#main-more-widget {
+  background: $BaseWindowColor;
+  border: 1px solid $MainTitleBarHoverColor;
+  border-radius: 14px;
+}
+
+// MainTitleBar Style
+#main-title-bar {
+  border: none;
+  outline: none;
+  background-color: $BaseWindowColor;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+#main-icon {
+  border-top-left-radius: 10px;
+}
+
+#main-title {
+  font-size: $BaseFontSize;
+  color: $BaseFontColor;
+}
+
+#main-version {
+  font-size: 10px;
+  color: $BaseVersionFontColor;
+}
+
+#min-button, #max-button {
+  &:hover {
+    background-color: $MainTitleBarHoverColor;
+  }
+}
+
+#close-button {
+  border-top-right-radius: 10px;
+
+  &:hover {
+    background-color: #C42B1C;
+  }
+}
+
+#main-body {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: $BaseWindowColor;
+}
+
+#main-content-page {
+  margin: 3px;
+  padding: 3px;
+  background: $BaseContentColor;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-left: 1px solid $BaseBodyBorderColor;
+  border-top: 1px solid $BaseBodyBorderColor;
+}
+
+// Card
+#main-card {
+  background-color: $BaseCardColor;
+  border-radius: 3px;
+  padding: 20px 24px;
+  border: 1px solid $BaseCardBorderColor;
+
+  #main-card-title {
+    background-color: #0000;
+    font-size: 18px;
+    font-weight: 600;
+    color: $BaseCardTitleColor;
+  }
+
+  &[Size="small"] {
+    padding: 12px 16px;
+
+    #main-card-title {
+      font-size: 16px;
+    }
+  }
+
+  &[Size="large"] {
+    padding: 24px 32px;
+
+    #main-card-title {
+      font-size: 18px;
+    }
+  }
+
+  &[Size="huge"] {
+    padding: 28px 40px;
+
+    #main-card-title {
+      font-size: 18px;
+    }
+  }
+
+  &[Bordered="false"] {
+    border: none;
+  }
+}
+
+// Avatar
+#main-avatar {
+  border-radius: 3px;
+  overflow: hidden;
+  font-weight: 800;
+  color: $BaseFontColor;
+
+  &[Size="small"][Circle="true"] {
+    border-radius: 14px;
+  }
+
+  &[Size="medium"][Circle="true"] {
+    border-radius: 17px;
+  }
+
+  &[Size="large"][Circle="true"] {
+    border-radius: 20px;
+  }
+}
+
+// Scroll
+#main-scroll {
+  border-radius: 8px;
+  background: #fbfcfd;
+  padding: 3px;
+}
+
+//noinspection CssInvalidPseudoSelector
+QScrollBar {
+  background: #0000;
+  margin: 0;
+  border-radius: 2px;
+
+  &:horizontal {
+    height: 5px;
+  }
+
+  &:vertical {
+    width: 5px;
+  }
+
+  &::handle {
+    background: $BaseScrollColor;
+    border-radius: 2px;
+    min-height: 20px;
+
+    &:horizontal {
+      height: 5px;
+
+      &:hover {
+        background: $BaseScrollHoverColor;
+      }
+    }
+
+    &:vertical {
+      width: 5px;
+
+      &:hover {
+        background: $BaseScrollHoverColor;
+      }
+    }
+  }
+
+
+  &::sub-page:horizontal,
+  &::add-page:horizontal,
+  &::sub-line:horizontal,
+  &::add-line:horizontal,
+  &::sub-page:vertical,
+  &::add-page:vertical,
+  &::sub-line:vertical,
+  &::add-line:vertical {
+    background: rgba(0, 0, 0, 0);
+  }
+}
+
+
+

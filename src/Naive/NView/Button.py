@@ -12,7 +12,7 @@ class Button(QtWidgets.QPushButton):
                  size: Size = Size.medium,
                  strong: Switch = Switch.off,
                  round: Switch = Switch.off,
-                 style_type: ButtonType = ButtonType.default, ):
+                 style_type: ButtonType = ButtonType.default):
         super().__init__(text)
         self.setObjectName('main-button')
         self.setProperty('type', style_type.value)
@@ -20,6 +20,10 @@ class Button(QtWidgets.QPushButton):
         self.setProperty('Round', round.value)
         self.setProperty('Size', size.value)
         self.setCallBack(callback)
+        self.setupUi()
+
+    def setupUi(self):
+        pass
 
     def enterEvent(self, event):
         self.setCursor(QtCore.Qt.CursorShape.PointingHandCursor)

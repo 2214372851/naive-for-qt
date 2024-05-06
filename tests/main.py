@@ -546,9 +546,10 @@ class CarouselPage(QtWidgets.QWidget):
         info_widget.setLayout(NView.BashVBoxLayout())
 
         label = QtWidgets.QLabel('基础卡片')
-        label.setFixedHeight(label.sizeHint().height()+5)
+        label.setFixedHeight(label.sizeHint().height() + 5)
         label.setWordWrap(True)
         info_widget.layout().addWidget(label)
+
 
         info_widget.layout().addWidget(
             # NView.Carousel(
@@ -574,46 +575,47 @@ class CarouselPage(QtWidgets.QWidget):
             #     arrow=NCore.Core.Switch.on,
             #     autoplay=NCore.Core.Switch.on
             # )
-            NView.Collapse(
-                data=[
-                    NView.CollapseItem(
-                        title='青铜',
-                        icon='naive.svg',
-                        callback=None,
-                        child=[
-                            NView.CollapseItem(
-                                title='可以',
-                                icon='naive.svg',
-                                callback=lambda: print('可以'),
-                                child=[]
-                            )
-                        ]
-                    ),
-                    NView.CollapseItem(
-                        title='白银',
-                        icon='naive.svg',
-                        callback=None,
-                        child=[
-                            NView.CollapseItem(
-                                title='很好',
-                                icon='naive.svg',
-                                callback=lambda: print('很好'),
-                                child=[]
-                            )
-                        ]
-                    ),
-                    NView.CollapseItem(
-                        title='黄金',
-                        icon='naive.svg',
-                        callback=None,
-                        child=[
-                            NView.CollapseWidgetItem(
-                                widget=NView.Button('真棒的按钮', style_type=NCore.Core.ButtonType.error)
-                            )
-                        ]
-                    ),
-                ]
-            )
+            # NView.Collapse(
+            #     data=[
+            #         NView.CollapseItem(
+            #             title='青铜',
+            #             icon='naive.svg',
+            #             callback=None,
+            #             child=[
+            #                 NView.CollapseItem(
+            #                     title='可以',
+            #                     icon='naive.svg',
+            #                     callback=lambda: print('可以'),
+            #                     child=[]
+            #                 )
+            #             ]
+            #         ),
+            #         NView.CollapseItem(
+            #             title='白银',
+            #             icon='naive.svg',
+            #             callback=None,
+            #             child=[
+            #                 NView.CollapseItem(
+            #                     title='很好',
+            #                     icon='naive.svg',
+            #                     callback=lambda: print('很好'),
+            #                     child=[]
+            #                 )
+            #             ]
+            #         ),
+            #         NView.CollapseItem(
+            #             title='黄金',
+            #             icon='naive.svg',
+            #             callback=None,
+            #             child=[
+            #                 NView.CollapseWidgetItem(
+            #                     widget=NView.Button('真棒的按钮', style_type=NCore.Core.ButtonType.error)
+            #                 )
+            #             ]
+            #         ),
+            #     ]
+            # )
+            NView.Dropdown(text='你好', style_type=NCore.Core.ButtonType.info)
         )
         card = NView.Card(
             title='基础',
@@ -664,7 +666,7 @@ if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     window = TestWindow()
     window.show()
-    with open(r'E:\CodeData\Py\naive-for-qt\src\Naive\static\light.css', 'r', encoding='utf-8') as f:
+    with open(r'../src\Naive\static\light.css', 'r', encoding='utf-8') as f:
         a = f.read()
         app.setStyleSheet(a)
     sys.exit(app.exec())

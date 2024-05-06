@@ -6,6 +6,7 @@ $MainTitleBarHoverColor: #E9E9E9;
 $BaseFontColor: #000;
 $BaseScrollColor: rgba(0, 0, 0, .25);
 $BaseScrollHoverColor: rgba(0, 0, 0, .4);
+
 $BaseVersionFontColor: #7a7d7e;
 $BaseFontSize: 14px;
 $BaseMenuBorderColor: #4098fc;
@@ -17,6 +18,8 @@ $BaseCardTitleColor: rgb(31, 34, 37); // Card Title Color
 $BaseCardBorderColor: #efeff5;
 $BaseFontFamily: "Microsoft YaHei";
 $BaseButtonFontColor: rgb(51, 54, 57);
+$BaseDropDownColor: $BaseContentColor;
+$BaseDropDownHoverColor: #F3F3F5;
 
 $alpha1: 0.82;
 $alpha2: 0.72;
@@ -90,6 +93,33 @@ QLabel {
   background-color: #0000;
 }
 
+// dropdown
+[name="main-dropdown-menu"] {
+
+  QMenu {
+    background-color: $BaseDropDownColor;
+    color: $BaseFontColor;
+    padding: 5px;
+    margin: 6px;
+    border-radius: 3px;
+    &::item {
+      background-color: $BaseDropDownColor;
+      //&:text {
+      //  padding-right: 10px;
+      //  padding-left: 10px;
+      //}
+      &:selected  {
+        background-color: $BaseDropDownHoverColor;
+      }
+    }
+  }
+}
+
+// divider
+#main-divider {
+  background-color: $BaseBodyBorderColor;
+}
+
 // collapse
 #main-collapse::item {
   //min-height: 30px;
@@ -126,6 +156,7 @@ QLabel {
   &:hover {
     background: rgba(255, 255, 255, .4);
   }
+
   &:pressed {
     background: rgba(255, 255, 255, .1);
   }
@@ -150,6 +181,10 @@ QLabel {
                   (medium, 34px, 14px),
                   (large, 40px, 18px),
   );
+
+  &::menu-indicator {
+    image: none;
+  }
 
   &:disabled {
     background: #0000;

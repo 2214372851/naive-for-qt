@@ -20,6 +20,7 @@ $BaseFontFamily: "Microsoft YaHei";
 $BaseButtonFontColor: rgb(51, 54, 57);
 $BaseDropDownColor: $BaseContentColor;
 $BaseDropDownHoverColor: #F3F3F5;
+$BaseDropDownMenuColor: #d4d4d6;
 
 $alpha1: 0.82;
 $alpha2: 0.72;
@@ -102,6 +103,7 @@ QLabel {
     padding: 5px;
     margin: 6px;
     border-radius: 3px;
+    border: 1px solid $BaseDropDownMenuColor;
     &::item {
       background-color: $BaseDropDownColor;
       //&:text {

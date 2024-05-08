@@ -20,10 +20,6 @@ class Button(QtWidgets.QPushButton):
         self.setProperty('Round', round.value)
         self.setProperty('Size', size.value)
         self.setCallBack(callback)
-        self.setupUi()
-
-    def setupUi(self):
-        pass
 
     def enterEvent(self, event):
         self.setCursor(QtCore.Qt.CursorShape.PointingHandCursor)

@@ -550,7 +550,6 @@ class CarouselPage(QtWidgets.QWidget):
         label.setWordWrap(True)
         info_widget.layout().addWidget(label)
 
-
         info_widget.layout().addWidget(
             # NView.Carousel(
             #     data=[
@@ -615,7 +614,17 @@ class CarouselPage(QtWidgets.QWidget):
             #         ),
             #     ]
             # )
-            NView.Dropdown(text='你好', style_type=NCore.Core.ButtonType.info)
+            NView.Dropdown(text='你好', style_type=NCore.Core.ButtonType.info, menus=[
+                NView.DropdownItem(
+                    name='一级菜单-1',
+                    children=[
+                        NView.DropdownItem(
+                            name='二级菜单',
+                            callback=lambda: print('二级')
+                        )
+                    ]
+                )
+            ])
         )
         card = NView.Card(
             title='基础',

@@ -1,8 +1,10 @@
 from PySide6 import QtCore, QtWidgets, QtGui
 from .Button import Button
+from typing import TypedDict, Callable, Union, List
 
 
-class Menu(QtWidgets.QMenu):
+class DropdownMenu(QtWidgets.QMenu):
+
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setWindowFlags(
@@ -11,35 +13,39 @@ class Menu(QtWidgets.QMenu):
             QtCore.Qt.WindowType.NoDropShadowWindowHint
         )
         self.setAttribute(QtCore.Qt.WidgetAttribute.WA_TranslucentBackground)
-        self.setAttribute(QtCore.Qt.WidgetAttribute.WA_StyledBackground)
-        shadow = QtWidgets.QGraphicsDropShadowEffect(self)
-        shadow.setOffset(0, 0)
-        shadow.setColor(QtGui.QColor('#444'))
-        shadow.setBlurRadius(10)
-        self.setGraphicsEffect(shadow)
+
+
+class DropdownItem(TypedDict):
+    name: str
+    callback: Union[Callable, None]
+    icon: str | None
+    children: List['DropdownItem'] | None
 
 
 class Dropdown(Button):
+    def __init__(self, menus: List[DropdownItem], *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._menus = menus
+        self.setupUi()
 
     def setupUi(self):
         self.setProperty('name', 'main-dropdown-menu')
-        list_menu = []
-        self.menu = Menu(self)
-        list_menu.append(self.menu)
-        m1 = QtWidgets.QMenu(self.menu)
-        list_menu.append(m1)
-        m1.setTitle('子菜单')
-        m1.addAction(QtGui.QAction('你好', self))
-        m1.addAction(QtGui.QAction('你好2', self))
-        m1.addAction(QtGui.QAction('你好3', self))
-        m2 = QtWidgets.QMenu(self.menu)
-        list_menu.append(m2)
-        m2.setTitle('子菜单2')
-        m2.addAction(QtGui.QAction('你好', self))
-        m2.addAction(QtGui.QAction('你好2', self))
-        m2.addAction(QtGui.QAction('你好3', self))
-        self.menu.addMenu(m1)
-        self.menu.addMenu(m2)
-        self.menu.addAction(QtGui.QAction('特殊他', self))
-        self.setMenu(self.menu)
-        # for menu in list_menu:
+        root_menu = DropdownMenu(self)
+        self.addNode(root_menu, self._menus)
+        self.setMenu(root_menu)
+
+    def addNode(self, parent, data):
+        for item in data:
+            name = item.get('name', '')
+            callback = item.get('callback', None)
+            children = item.get('children', [])
+            if children:
+                node = DropdownMenu(parent)
+                node.setTitle(name)
+                parent.addMenu(node)
+                self.addNode(node, children)
+            else:
+                node = QtGui.QAction(name, self)
+                if callback:
+                    node.triggered.connect(callback)
+                parent.addAction(node)

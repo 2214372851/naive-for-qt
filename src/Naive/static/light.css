@@ -19,6 +19,7 @@ QLabel {
   padding: 5px;
   margin: 6px;
   border-radius: 3px;
+  border: 1px solid #d4d4d6;
 }
 [name=main-dropdown-menu] QMenu::item {
   background-color: #fff;

@@ -13,6 +13,13 @@ QLabel {
   background-color: rgba(0, 0, 0, 0);
 }
 
+#main-tag {
+  background-color: #FAFAFC;
+  border-radius: 2px;
+  border: 1px solid rgb(224, 224, 230);
+  padding: 0 7px;
+}
+
 [name=main-dropdown-menu] QMenu {
   background-color: #fff;
   color: #000;

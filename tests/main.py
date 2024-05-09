@@ -614,17 +614,20 @@ class CarouselPage(QtWidgets.QWidget):
             #         ),
             #     ]
             # )
-            NView.Dropdown(text='你好', style_type=NCore.Core.ButtonType.info, menus=[
-                NView.DropdownItem(
-                    name='一级菜单-1',
-                    children=[
-                        NView.DropdownItem(
-                            name='二级菜单',
-                            callback=lambda: print('二级')
-                        )
-                    ]
-                )
-            ])
+            # NView.Dropdown(text='你好', style_type=NCore.Core.ButtonType.info, menus=[
+            #     NView.DropdownItem(
+            #         name='一级菜单-1',
+            #         icon='Icons:card-two.svg',
+            #         children=[
+            #             NView.DropdownItem(
+            #                 name='二级菜单',
+            #                 icon='Icons:naive.svg',
+            #                 callback=lambda: print('二级')
+            #             )
+            #         ]
+            #     )
+            # ])
+            NView.Tag('爱在西元前')
         )
         card = NView.Card(
             title='基础',

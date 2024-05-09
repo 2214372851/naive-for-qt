@@ -37,6 +37,7 @@ class Dropdown(Button):
     def addNode(self, parent, data):
         for item in data:
             name = item.get('name', '')
+            icon = item.get('icon', '')
             callback = item.get('callback', None)
             children = item.get('children', [])
             if children:
@@ -46,6 +47,6 @@ class Dropdown(Button):
                 self.addNode(node, children)
             else:
                 node = QtGui.QAction(name, self)
-                if callback:
-                    node.triggered.connect(callback)
+                callback and node.triggered.connect(callback)
                 parent.addAction(node)
+            icon and node.setIcon(QtGui.QIcon(icon))

@@ -20,7 +20,6 @@ class MainTitleBar(QtWidgets.QWidget):
         self.min_button = None
         self.max_button = None
         self.close_button = None
-        init_icon()
         self.setupUi(title, version, icon)
 
     def setupUi(self, title: str, version: str, icon: str):
@@ -219,6 +218,9 @@ class MenuItem(TypedDict):
 
 
 class MainWindow(BashWindow):
+    # 初始化图标库
+    init_icon()
+
     def __init__(self, title: str, version: str, icon: str, menus: list[MenuItem] = None, parent=None):
         super().__init__(parent)
         self.content: MainContent | None = None

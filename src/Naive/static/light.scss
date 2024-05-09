@@ -22,6 +22,9 @@ $BaseDropDownColor: $BaseContentColor;
 $BaseDropDownHoverColor: #F3F3F5;
 $BaseDropDownMenuColor: #d4d4d6;
 
+$BaseTagColor: $BaseCardActionColor;
+$BaseTagBorderColor: rgb(224, 224, 230);
+
 $alpha1: 0.82;
 $alpha2: 0.72;
 $alpha3: 0.38;
@@ -94,9 +97,17 @@ QLabel {
   background-color: #0000;
 }
 
-// dropdown
-[name="main-dropdown-menu"] {
+// tag
+#main-tag {
+  background-color: $BaseTagColor;
+  border-radius: 2px;
+  border: 1px solid $BaseTagBorderColor;
+  padding: 0 7px;
+}
 
+// dropdown
+//noinspection CssInvalidPseudoSelector
+[name="main-dropdown-menu"] {
   QMenu {
     background-color: $BaseDropDownColor;
     color: $BaseFontColor;
@@ -104,13 +115,14 @@ QLabel {
     margin: 6px;
     border-radius: 3px;
     border: 1px solid $BaseDropDownMenuColor;
+
     &::item {
       background-color: $BaseDropDownColor;
       //&:text {
       //  padding-right: 10px;
       //  padding-left: 10px;
       //}
-      &:selected  {
+      &:selected {
         background-color: $BaseDropDownHoverColor;
       }
     }
@@ -123,6 +135,7 @@ QLabel {
 }
 
 // collapse
+//noinspection CssInvalidPseudoSelector
 #main-collapse::item {
   //min-height: 30px;
   height: auto;
@@ -144,6 +157,7 @@ QLabel {
   }
 }
 
+//noinspection CssInvalidPseudoSelector
 [name="main-carousel-controls"] {
   background: rgba(255, 255, 255, .2);
   width: 30px;

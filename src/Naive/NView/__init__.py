@@ -8,3 +8,4 @@ from .Carousel import Carousel, CarouselItem
 from .Collapse import Collapse, CollapseItem, CollapseWidgetItem
 from .Divider import Divider
 from .Dropdown import Dropdown, DropdownItem
+from .Tag import Tag

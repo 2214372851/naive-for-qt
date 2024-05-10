@@ -22,8 +22,6 @@ $BaseDropDownColor: $BaseContentColor;
 $BaseDropDownHoverColor: #F3F3F5;
 $BaseDropDownMenuColor: #d4d4d6;
 
-$BaseTagColor: $BaseCardActionColor;
-$BaseTagBorderColor: rgb(224, 224, 230);
 
 $alpha1: 0.82;
 $alpha2: 0.72;
@@ -81,6 +79,22 @@ $SuccessHover: #36ad6a;
 $SuccessDefault: #18a058;
 $SuccessActive: #0c7a43;
 
+// Tag
+$BaseTagColor: $BaseCardActionColor;
+$BaseTagBorderColor: rgb(224, 224, 230);
+$BaseTagSuccessColor: #E7F5EE;
+$BaseTagSuccessBorderColor: #A8DBC1;
+$BaseTagSuccessFontColor: #18A058;
+$BaseTagWarningColor: #FDF3E4;
+$BaseTagWarningBorderColor: #F9D69F;
+$BaseTagWarningFontColor: #F0A020;
+$BaseTagErrorColor: #FBEFF1;
+$BaseTagErrorBorderColor: #F1C3CC;
+$BaseTagErrorFontColor: #d03050;
+$BaseTagInfoColor: #E8F2FD;
+$BaseTagInfoBorderColor: #BEDAF9;
+$BaseTagInfoFontColor: #2080F0;
+
 
 * {
   font-family: $BaseFontFamily;
@@ -100,9 +114,55 @@ QLabel {
 // tag
 #main-tag {
   background-color: $BaseTagColor;
-  border-radius: 2px;
   border: 1px solid $BaseTagBorderColor;
-  padding: 0 7px;
+  border-radius: 2px;
+  padding: 4px 7px;
+
+  &[type="success"] {
+    background-color: $BaseTagSuccessColor;
+    border: 1px solid $BaseTagSuccessBorderColor;
+    color: $BaseTagSuccessFontColor;
+  }
+
+  &[type="warning"] {
+    background-color: $BaseTagWarningColor;
+    border: 1px solid $BaseTagWarningBorderColor;
+    color: $BaseTagWarningFontColor;
+  }
+
+  &[type="error"] {
+    background-color: $BaseTagErrorColor;
+    border: 1px solid $BaseTagErrorBorderColor;
+    color: $BaseTagErrorFontColor;
+  }
+
+  &[type="info"] {
+    background-color: $BaseTagInfoColor;
+    border: 1px solid $BaseTagInfoBorderColor;
+    color: $BaseTagInfoFontColor;
+  }
+
+  &[Round="true"] {
+    border-radius: 14px;
+  }
+
+  &[Size="small"] {
+    padding: 2px 7px;
+    font-size: 12px;
+
+    &[Round="true"] {
+      border-radius: 10px;
+    }
+  }
+
+  &[Size="large"] {
+    padding: 7px;
+
+    &[Round="true"] {
+      border-radius: 17px;
+    }
+  }
+
 }
 
 // dropdown

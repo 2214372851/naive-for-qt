@@ -627,7 +627,7 @@ class CarouselPage(QtWidgets.QWidget):
             #         ]
             #     )
             # ])
-            NView.Tag('爱在西元前')
+            NView.Tag('爱在西元前', style_type=NCore.Core.TagType.info)
         )
         card = NView.Card(
             title='基础',

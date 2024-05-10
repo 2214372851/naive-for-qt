@@ -15,9 +15,45 @@ QLabel {
 
 #main-tag {
   background-color: #FAFAFC;
-  border-radius: 2px;
   border: 1px solid rgb(224, 224, 230);
-  padding: 0 7px;
+  border-radius: 2px;
+  padding: 4px 7px;
+}
+#main-tag[type=success] {
+  background-color: #E7F5EE;
+  border: 1px solid #A8DBC1;
+  color: #18A058;
+}
+#main-tag[type=warning] {
+  background-color: #FDF3E4;
+  border: 1px solid #F9D69F;
+  color: #F0A020;
+}
+#main-tag[type=error] {
+  background-color: #FBEFF1;
+  border: 1px solid #F1C3CC;
+  color: #d03050;
+}
+#main-tag[type=info] {
+  background-color: #E8F2FD;
+  border: 1px solid #BEDAF9;
+  color: #2080F0;
+}
+#main-tag[Round=true] {
+  border-radius: 14px;
+}
+#main-tag[Size=small] {
+  padding: 2px 7px;
+  font-size: 12px;
+}
+#main-tag[Size=small][Round=true] {
+  border-radius: 10px;
+}
+#main-tag[Size=large] {
+  padding: 7px;
+}
+#main-tag[Size=large][Round=true] {
+  border-radius: 17px;
 }
 
 [name=main-dropdown-menu] QMenu {

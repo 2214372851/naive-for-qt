@@ -39,3 +39,11 @@ class ButtonType(Enum):
     tertiary_success = 'tertiary-success'
     tertiary_warning = 'tertiary-warning'
     tertiary_error = 'tertiary-error'
+
+
+class TagType(Enum):
+    default = 'default'
+    info = 'info'
+    success = 'success'
+    warning = 'warning'
+    error = 'error'

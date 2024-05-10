@@ -47,3 +47,13 @@ class TagType(Enum):
     success = 'success'
     warning = 'warning'
     error = 'error'
+
+
+class TextType(Enum):
+    default = 'default'
+    info = 'info'
+    success = 'success'
+    warning = 'warning'
+    error = 'error'
+
+

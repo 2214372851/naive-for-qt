@@ -95,6 +95,7 @@ $BaseTagInfoColor: #E8F2FD;
 $BaseTagInfoBorderColor: #BEDAF9;
 $BaseTagInfoFontColor: #2080F0;
 
+$BaseTextCodeColor: rgba(244, 244, 248, 1);
 
 * {
   font-family: $BaseFontFamily;
@@ -109,6 +110,71 @@ QPushButton, QWidget {
 
 QLabel {
   background-color: #0000;
+}
+
+// typography
+#main-h1 {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+#main-h2 {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+#main-h3 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+#main-h4 {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+#main-text {
+  font-size: 14px;
+
+  &[type="info"] {
+    color: $InfoDefault;
+  }
+
+  &[type="error"] {
+    color: $ErrorDefault;
+  }
+
+  &[type="warning"] {
+    color: $WarningDefault;
+  }
+
+  &[type="success"] {
+    color: $SuccessDefault;
+  }
+
+  &[Strong="true"] {
+    font-weight: 500;
+  }
+
+  &[Underline="true"] {
+    text-decoration: underline;
+
+    &[Delete="true"] {
+      text-decoration: underline line-through;
+    }
+  }
+
+  &[Delete="true"] {
+    text-decoration: line-through;
+
+    &[Underline="true"] {
+      text-decoration: underline line-through;
+    }
+  }
+
+  &[Code="true"] {
+    background-color: $BaseTextCodeColor;
+  }
 }
 
 // tag

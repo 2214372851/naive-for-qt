@@ -13,6 +13,60 @@ QLabel {
   background-color: rgba(0, 0, 0, 0);
 }
 
+#main-h1 {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+#main-h2 {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+#main-h3 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+#main-h4 {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+#main-text {
+  font-size: 14px;
+}
+#main-text[type=info] {
+  color: #2080f0;
+}
+#main-text[type=error] {
+  color: #d03050;
+}
+#main-text[type=warning] {
+  color: #f0a020;
+}
+#main-text[type=success] {
+  color: #18a058;
+}
+#main-text[Strong=true] {
+  font-weight: 500;
+}
+#main-text[Underline=true] {
+  text-decoration: underline;
+}
+#main-text[Underline=true][Delete=true] {
+  text-decoration: underline line-through;
+}
+#main-text[Delete=true] {
+  text-decoration: line-through;
+}
+#main-text[Delete=true][Underline=true] {
+  text-decoration: underline line-through;
+}
+#main-text[Code=true] {
+  background-color: rgb(244, 244, 248);
+}
+
 #main-tag {
   background-color: #FAFAFC;
   border: 1px solid rgb(224, 224, 230);

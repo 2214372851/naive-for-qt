@@ -264,3 +264,10 @@ class MainWindow(BashWindow):
         main.layout().addWidget(title_bar)
         main.layout().addWidget(body)
         self.layout().addWidget(main)
+
+    def paintEvent(self, event):
+        painter = QtGui.QPainter(self)
+        painter.setPen(QtGui.QPen(QtGui.QColor(255, 0, 0, 255), 1))
+        painter.setBrush(QtGui.QBrush(QtGui.QColor(255, 0, 0, 255)))
+        painter.drawText(0, 0, self.width(), self.height(), QtCore.Qt.AlignmentFlag.AlignCenter, "Naive")
+        painter.end()

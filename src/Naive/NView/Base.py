@@ -42,9 +42,11 @@ class BashWindow(QtWidgets.QWidget):
             self.top_edge.contains(mouse_pos),
             self.bottom_edge.contains(mouse_pos)
         )
+        return super().mouseMoveEvent(event)
 
     def mousePressEvent(self, event):
         self._mouseResizeWindow(event)
+        return super().mousePressEvent(event)
 
     def _mouseCursor(self, left_edge, right_edge, top_edge, bottom_edge):
         left_top_edge = (left_edge, top_edge)
@@ -115,3 +117,16 @@ class BashVBoxLayout(QtWidgets.QVBoxLayout):
         super().__init__(parent)
         self.setContentsMargins(0, 0, 0, 0)
         self.setSpacing(0)
+
+
+class BashMenu(QtWidgets.QMenu):
+
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.setObjectName('main-menu')
+        self.setWindowFlags(
+            self.windowFlags() |
+            QtCore.Qt.WindowType.FramelessWindowHint |
+            QtCore.Qt.WindowType.NoDropShadowWindowHint
+        )
+        self.setAttribute(QtCore.Qt.WidgetAttribute.WA_TranslucentBackground)

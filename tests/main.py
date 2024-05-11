@@ -627,7 +627,11 @@ class CarouselPage(QtWidgets.QWidget):
             #         ]
             #     )
             # ])
-            NView.Text('h1 标签')
+            # NView.Text('h1 标签')
+            # NView.AutoComplete([
+            #     '22143'
+            # ])
+            NView.Checkbox('测试')
         )
         card = NView.Card(
             title='基础',
@@ -672,6 +676,7 @@ class TestWindow(NView.MainWindow):
             icon='Icons:naive.svg',
             menus=menus
         )
+
 
 
 if __name__ == '__main__':

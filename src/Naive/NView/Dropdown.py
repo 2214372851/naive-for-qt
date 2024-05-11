@@ -1,18 +1,7 @@
 from PySide6 import QtCore, QtWidgets, QtGui
 from .Button import Button
 from typing import TypedDict, Callable, Union, List
-
-
-class DropdownMenu(QtWidgets.QMenu):
-
-    def __init__(self, parent=None):
-        super().__init__(parent)
-        self.setWindowFlags(
-            self.windowFlags() |
-            QtCore.Qt.WindowType.FramelessWindowHint |
-            QtCore.Qt.WindowType.NoDropShadowWindowHint
-        )
-        self.setAttribute(QtCore.Qt.WidgetAttribute.WA_TranslucentBackground)
+from src.Naive.NView.Base import BashMenu
 
 
 class DropdownItem(TypedDict):
@@ -30,7 +19,7 @@ class Dropdown(Button):
 
     def setupUi(self):
         self.setProperty('name', 'main-dropdown-menu')
-        root_menu = DropdownMenu(self)
+        root_menu = BashMenu(self)
         self.addNode(root_menu, self._menus)
         self.setMenu(root_menu)
 
@@ -41,7 +30,7 @@ class Dropdown(Button):
             callback = item.get('callback', None)
             children = item.get('children', [])
             if children:
-                node = DropdownMenu(parent)
+                node = BashMenu(parent)
                 node.setTitle(name)
                 parent.addMenu(node)
                 self.addNode(node, children)

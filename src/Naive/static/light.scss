@@ -112,6 +112,37 @@ QLabel {
   background-color: #0000;
 }
 
+//main-checkbox
+//noinspection CssInvalidPseudoSelector
+#main-checkbox::indicator {
+  width: 16px;
+  height: 16px;
+  border: 1px solid $DefaultBorder;
+
+  &:hover {
+    outline: none;
+    border: 1px solid green;
+  }
+  &:checked {
+    image: url(Icons:check-small.svg);
+    background-color: #0c7a43;
+  }
+}
+
+//main-auto-complete
+#main-auto-complete {
+  border: 1px solid $DefaultBorder;
+  border-radius: 3px;
+  padding: 6px 10px;
+
+  &:hover {
+    border: 1px solid $DefaultBorderHover;
+  }
+  &:focus {
+    border: 1px solid $DefaultBorderHover;
+  }
+}
+
 // typography
 #main-h1 {
   font-size: 30px;
@@ -231,10 +262,9 @@ QLabel {
 
 }
 
-// dropdown
+// main-menu
 //noinspection CssInvalidPseudoSelector
-[name="main-dropdown-menu"] {
-  QMenu {
+#main-menu {
     background-color: $BaseDropDownColor;
     color: $BaseFontColor;
     padding: 5px;
@@ -253,7 +283,6 @@ QLabel {
       }
     }
   }
-}
 
 // divider
 #main-divider {

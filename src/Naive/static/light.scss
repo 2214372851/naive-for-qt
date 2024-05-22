@@ -97,6 +97,9 @@ $BaseTagInfoFontColor: #2080F0;
 
 $BaseTextCodeColor: rgba(244, 244, 248, 1);
 
+$BaseCheckBoxHoverColor: #18A058;
+
+
 * {
   font-family: $BaseFontFamily;
   font-size: $BaseFontSize;
@@ -117,16 +120,36 @@ QLabel {
 #main-checkbox::indicator {
   width: 16px;
   height: 16px;
+  border-radius: 2px;
   border: 1px solid $DefaultBorder;
+  $CheckBoxSize: (
+                  (small, 14px, 14px),
+                  (medium, 16px, 14px),
+                  (large, 18px, 15px),
+  );;
 
   &:hover {
     outline: none;
-    border: 1px solid green;
+    border: 1px solid $BaseCheckBoxHoverColor;
   }
+
   &:checked {
     image: url(Icons:check-small.svg);
-    background-color: #0c7a43;
+    background-color: $BaseCheckBoxHoverColor;
+    border: 1px solid $BaseCheckBoxHoverColor;
+
   }
+
+  @each $size, $hw, $font in $CheckBoxSize {
+    &[Size="#{$size}"] {
+      height: $hw;
+      width: $hw;
+      font-size: $font;
+    }
+
+  }
+
+
 }
 
 //main-auto-complete
@@ -138,6 +161,7 @@ QLabel {
   &:hover {
     border: 1px solid $DefaultBorderHover;
   }
+
   &:focus {
     border: 1px solid $DefaultBorderHover;
   }
@@ -265,24 +289,24 @@ QLabel {
 // main-menu
 //noinspection CssInvalidPseudoSelector
 #main-menu {
-    background-color: $BaseDropDownColor;
-    color: $BaseFontColor;
-    padding: 5px;
-    margin: 6px;
-    border-radius: 3px;
-    border: 1px solid $BaseDropDownMenuColor;
+  background-color: $BaseDropDownColor;
+  color: $BaseFontColor;
+  padding: 5px;
+  margin: 6px;
+  border-radius: 3px;
+  border: 1px solid $BaseDropDownMenuColor;
 
-    &::item {
-      background-color: $BaseDropDownColor;
-      //&:text {
-      //  padding-right: 10px;
-      //  padding-left: 10px;
-      //}
-      &:selected {
-        background-color: $BaseDropDownHoverColor;
-      }
+  &::item {
+    background-color: $BaseDropDownColor;
+    //&:text {
+    //  padding-right: 10px;
+    //  padding-left: 10px;
+    //}
+    &:selected {
+      background-color: $BaseDropDownHoverColor;
     }
   }
+}
 
 // divider
 #main-divider {

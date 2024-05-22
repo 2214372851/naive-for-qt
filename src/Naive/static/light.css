@@ -16,15 +16,32 @@ QLabel {
 #main-checkbox::indicator {
   width: 16px;
   height: 16px;
+  border-radius: 2px;
   border: 1px solid #e0e0e6;
 }
 #main-checkbox::indicator:hover {
   outline: none;
-  border: 1px solid green;
+  border: 1px solid #18A058;
 }
 #main-checkbox::indicator:checked {
   image: url(Icons:check-small.svg);
-  background-color: #0c7a43;
+  background-color: #18A058;
+  border: 1px solid #18A058;
+}
+#main-checkbox::indicator[Size=small] {
+  height: 14px;
+  width: 14px;
+  font-size: 14px;
+}
+#main-checkbox::indicator[Size=medium] {
+  height: 16px;
+  width: 16px;
+  font-size: 14px;
+}
+#main-checkbox::indicator[Size=large] {
+  height: 18px;
+  width: 18px;
+  font-size: 15px;
 }
 
 #main-auto-complete {

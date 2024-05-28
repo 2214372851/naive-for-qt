@@ -631,7 +631,10 @@ class CarouselPage(QtWidgets.QWidget):
             # NView.AutoComplete([
             #     '22143'
             # ])
-            NView.Checkbox('测试')
+            # NView.Checkbox('测试'),
+            # NView.Input(placeholder='请输入内容...'),
+            # NView.Textarea(placeholder='请输入内容...')
+            NView.InputNumber()
         )
         card = NView.Card(
             title='基础',

@@ -115,6 +115,62 @@ QLabel {
   background-color: #0000;
 }
 
+// main-input
+//noinspection CssInvalidPseudoSelector
+#main-input {
+  padding: 6px 12px;
+  border: 1px solid $DefaultBorder;
+  border-radius: 3px;
+
+  &:hover, &:focus {
+    border: 1px solid $DefaultBorderHover;
+  }
+
+  &::up-button {
+    subcontrol-origin: border;
+    subcontrol-position: right;
+    border: none;
+    width: 8px;
+    margin: 12px;
+    height: 8px;
+
+    &:hover {
+      border: none;
+    }
+  }
+
+  &::up-arrow {
+    image: url(Icons:plus.svg);
+
+    &:hover {
+      background-color: $DefaultBorder;
+      border-radius: 10px;
+    }
+  }
+
+  &::down-button {
+    subcontrol-origin: border;
+    subcontrol-position: left;
+    border: none;
+    width: 8px;
+    margin: 12px;
+    height: 8px;
+
+    &:hover {
+      border: none;
+    }
+  }
+
+  &::down-arrow {
+    image: url(Icons:minus.svg);
+
+    &:hover {
+      background-color: $DefaultBorder;
+      border-radius: 10px;
+    }
+  }
+}
+
 //main-checkbox
 //noinspection CssInvalidPseudoSelector
 #main-checkbox::indicator {

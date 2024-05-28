@@ -13,6 +13,51 @@ QLabel {
   background-color: rgba(0, 0, 0, 0);
 }
 
+#main-input {
+  padding: 6px 12px;
+  border: 1px solid #e0e0e6;
+  border-radius: 3px;
+}
+#main-input:hover, #main-input:focus {
+  border: 1px solid #36AD6A;
+}
+#main-input::up-button {
+  subcontrol-origin: border;
+  subcontrol-position: right;
+  border: none;
+  width: 8px;
+  margin: 12px;
+  height: 8px;
+}
+#main-input::up-button:hover {
+  border: none;
+}
+#main-input::up-arrow {
+  image: url(Icons:plus.svg);
+}
+#main-input::up-arrow:hover {
+  background-color: #e0e0e6;
+  border-radius: 10px;
+}
+#main-input::down-button {
+  subcontrol-origin: border;
+  subcontrol-position: left;
+  border: none;
+  width: 8px;
+  margin: 12px;
+  height: 8px;
+}
+#main-input::down-button:hover {
+  border: none;
+}
+#main-input::down-arrow {
+  image: url(Icons:minus.svg);
+}
+#main-input::down-arrow:hover {
+  background-color: #e0e0e6;
+  border-radius: 10px;
+}
+
 #main-checkbox::indicator {
   width: 16px;
   height: 16px;

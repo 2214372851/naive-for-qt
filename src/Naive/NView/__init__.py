@@ -12,3 +12,4 @@ from .Tag import Tag
 from .Typography import H1, H2, H3, H4, Text
 from .AutoComplete import AutoComplete
 from .Checkbox import Checkbox
+from .Input import Input, Textarea, InputNumber

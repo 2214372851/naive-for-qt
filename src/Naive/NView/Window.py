@@ -4,8 +4,8 @@ from typing import Callable, TypedDict, Union
 
 from PySide6 import QtCore, QtGui, QtWidgets
 
-from src.Naive.NUtils.NIcon import init_icon
-from src.Naive.NView.Base import BashVBoxLayout, BashHBoxLayout, BashWindow
+from Naive.NUtils.NIcon import init_icon
+from Naive.NView.Base import BashVBoxLayout, BashHBoxLayout, BashWindow
 
 
 class MainTitleBar(QtWidgets.QWidget):

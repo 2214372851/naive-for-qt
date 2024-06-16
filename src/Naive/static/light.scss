@@ -99,6 +99,10 @@ $BaseTextCodeColor: rgba(244, 244, 248, 1);
 
 $BaseCheckBoxHoverColor: #18A058;
 
+$BaseSelectBorderColor: #E0E0E6;
+$BaseSelectDisabledBackgroundColor: #FAFAFC;
+$BaseSelectMenusBackgroundColor: #FAFAFC;
+
 
 * {
   font-family: $BaseFontFamily;
@@ -113,6 +117,55 @@ QPushButton, QWidget {
 
 QLabel {
   background-color: #0000;
+}
+
+// main-select
+#main-select {
+  height: 28px;
+  border: 1px solid $BaseSelectBorderColor;
+  border-radius: 3px;
+  padding: 3px 26px 3px 12px;
+  $SelectSize: (
+                  (small, 14px, 14px),
+                  (medium, 28px, 14px),
+                  (large, 34px, 15px),
+  );;
+
+  &:disabled {
+    background-color: $BaseSelectDisabledBackgroundColor;
+  }
+
+  &::drop-down {
+    background-color: #0000;
+    width: 18px;
+    outline: none;
+  }
+
+  &::down-arrow {
+    border-image: url(Icons:down.svg);
+    //width: 26px;
+    height: 14px;
+    width: 14px;
+  }
+
+  @each $size, $hw, $font in $SelectSize {
+    &[Size="#{$size}"] {
+      height: $hw;
+      width: $hw;
+      font-size: $font;
+    }
+  }
+  //& > QAbstractItemView::item {
+  //  height: 24px;
+  //}
+}
+
+#main-select QAbstractItemView {
+  background-color: $BaseSelectMenusBackgroundColor;
+  border: 1px solid $BaseSelectBorderColor;
+}
+#main-select QAbstractItemView::item {
+  height: 30px;
 }
 
 // main-input

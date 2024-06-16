@@ -1,6 +1,6 @@
 from PySide6 import QtCore, QtGui, QtWidgets
-from src.Naive.NView.Base import BashVBoxLayout, BashHBoxLayout
-from src.Naive.NCore.Core import Switch
+from Naive.NView.Base import BashVBoxLayout, BashHBoxLayout
+from Naive.NCore.Core import Switch
 from functools import partial
 from typing import Callable, TypedDict, List
 

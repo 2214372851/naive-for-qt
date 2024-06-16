@@ -1,7 +1,7 @@
 from functools import partial
 
 from PySide6 import QtWidgets, QtCore, QtGui
-from src.Naive.NView.Base import BashMenu
+from Naive.NView.Base import BashMenu
 
 
 class AutoComplete(QtWidgets.QLineEdit):

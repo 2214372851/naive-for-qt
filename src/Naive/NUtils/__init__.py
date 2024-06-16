@@ -1,0 +1,1 @@
+from .NStyle import init_style

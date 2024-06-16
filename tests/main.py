@@ -634,7 +634,9 @@ class CarouselPage(QtWidgets.QWidget):
             # NView.Checkbox('测试'),
             # NView.Input(placeholder='请输入内容...'),
             # NView.Textarea(placeholder='请输入内容...')
-            NView.InputNumber()
+            # NView.InputNumber(),
+            # NView.Radio(text='单选框'),
+            NView.Select(items=['a', 'b', 'c']),
         )
         card = NView.Card(
             title='基础',

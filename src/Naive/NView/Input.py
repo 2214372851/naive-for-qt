@@ -1,4 +1,4 @@
-from PySide6 import QtWidgets, QtCore, QtGui
+from PySide6 import QtWidgets
 
 
 class Input(QtWidgets.QLineEdit):
@@ -22,6 +22,8 @@ class Textarea(QtWidgets.QTextEdit):
 
 
 class InputNumber(QtWidgets.QSpinBox):
-    def __init__(self):
+    def __init__(self, max: int = 100, min: int = 0):
         super().__init__()
+        self.setMaximum(max)
+        self.setMinimum(min)
         self.setObjectName('main-input')

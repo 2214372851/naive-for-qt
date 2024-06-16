@@ -13,6 +13,50 @@ QLabel {
   background-color: rgba(0, 0, 0, 0);
 }
 
+#main-select {
+  height: 28px;
+  border: 1px solid #E0E0E6;
+  border-radius: 3px;
+  padding: 3px 26px 3px 12px;
+}
+#main-select:disabled {
+  background-color: #FAFAFC;
+}
+#main-select::drop-down {
+  background-color: rgba(0, 0, 0, 0);
+  width: 18px;
+  outline: none;
+}
+#main-select::down-arrow {
+  border-image: url(Icons:down.svg);
+  height: 14px;
+  width: 14px;
+}
+#main-select[Size=small] {
+  height: 14px;
+  width: 14px;
+  font-size: 14px;
+}
+#main-select[Size=medium] {
+  height: 28px;
+  width: 28px;
+  font-size: 14px;
+}
+#main-select[Size=large] {
+  height: 34px;
+  width: 34px;
+  font-size: 15px;
+}
+
+#main-select QAbstractItemView {
+  background-color: #FAFAFC;
+  border: 1px solid #E0E0E6;
+}
+
+#main-select QAbstractItemView::item {
+  height: 30px;
+}
+
 #main-input {
   padding: 6px 12px;
   border: 1px solid #e0e0e6;

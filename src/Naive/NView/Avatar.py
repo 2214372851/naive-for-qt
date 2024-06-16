@@ -1,5 +1,5 @@
 from PySide6 import QtCore, QtGui, QtWidgets
-from src.Naive.NCore.Core import Size, Switch
+from Naive.NCore.Core import Size, Switch
 
 
 class Avatar(QtWidgets.QLabel):

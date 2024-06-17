@@ -1,5 +1,5 @@
 from PySide6 import QtCore, QtWidgets, QtGui
-from Naive.NCore.Core import TextType, Switch
+from ..NCore.Core import TextType, Switch
 
 
 class H1(QtWidgets.QLabel):

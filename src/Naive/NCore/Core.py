@@ -57,3 +57,6 @@ class TextType(Enum):
     error = 'error'
 
 
+class OpenType(Enum):
+    file = 'file'
+    folder = 'folder'

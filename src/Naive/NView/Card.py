@@ -1,6 +1,6 @@
 from PySide6 import QtCore, QtGui, QtWidgets
-from Naive.NView.Base import BashVBoxLayout, BashHBoxLayout
-from Naive.NCore.Core import Size, Switch
+from ..NView.Base import BashVBoxLayout, BashHBoxLayout
+from ..NCore.Core import Size, Switch
 
 
 class Card(QtWidgets.QFrame):

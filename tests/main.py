@@ -636,7 +636,8 @@ class CarouselPage(QtWidgets.QWidget):
             # NView.Textarea(placeholder='请输入内容...')
             # NView.InputNumber(),
             # NView.Radio(text='单选框'),
-            NView.Select(items=['a', 'b', 'c']),
+            # NView.Select(items=['a', 'b', 'c']),
+            NView.ApiUpload(),
         )
         card = NView.Card(
             title='基础',
@@ -681,7 +682,6 @@ class TestWindow(NView.MainWindow):
             icon='Icons:naive.svg',
             menus=menus
         )
-
 
 
 if __name__ == '__main__':

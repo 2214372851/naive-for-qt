@@ -2,7 +2,7 @@ from typing import Callable
 
 from PySide6 import QtCore, QtWidgets
 
-from Naive.NCore.Core import ButtonType, Switch, Size
+from ..NCore.Core import ButtonType, Switch, Size
 
 
 class Button(QtWidgets.QPushButton):

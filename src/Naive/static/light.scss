@@ -103,6 +103,8 @@ $BaseSelectBorderColor: #E0E0E6;
 $BaseSelectDisabledBackgroundColor: #FAFAFC;
 $BaseSelectMenusBackgroundColor: #FAFAFC;
 
+$BaseUploadBorderColor: #E0E0E6;
+$BaseUploadHoverColor: #18A058;
 
 * {
   font-family: $BaseFontFamily;
@@ -117,6 +119,17 @@ QPushButton, QWidget {
 
 QLabel {
   background-color: #0000;
+}
+
+// main-upload
+#main-upload {
+  border: 1px solid $BaseUploadBorderColor;
+  border-radius: 3px;
+  background-color: #0000;
+  &:hover {
+    border: 1px solid $BaseUploadHoverColor;
+    border-spacing: 1px;
+  }
 }
 
 // main-select

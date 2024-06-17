@@ -1,4 +1,4 @@
-from Naive.NCore.Core import Size
+from ..NCore.Core import Size
 from PySide6 import QtCore, QtWidgets, QtGui
 
 

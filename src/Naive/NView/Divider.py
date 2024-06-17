@@ -1,5 +1,5 @@
 from PySide6 import QtCore, QtWidgets, QtGui
-from Naive.NCore.Core import Switch
+from ..NCore.Core import Switch
 
 
 class Divider(QtWidgets.QFrame):

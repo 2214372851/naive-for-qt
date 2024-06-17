@@ -1,7 +1,7 @@
 from PySide6 import QtCore, QtWidgets, QtGui
 from .Button import Button
 from typing import TypedDict, Callable, Union, List
-from Naive.NView.Base import BashMenu
+from ..NView.Base import BashMenu
 
 
 class DropdownItem(TypedDict):

@@ -2,9 +2,9 @@ from pathlib import Path
 
 from PySide6.QtCore import QSettings
 
-from Naive.NUtils import NIcon
-from Naive.NCore import NMetaClass
-from Naive.NCore import NTheme
+from ..NUtils import NIcon
+from ..NCore import NMetaClass
+from ..NCore import NTheme
 
 
 class NSetting(metaclass=NMetaClass):

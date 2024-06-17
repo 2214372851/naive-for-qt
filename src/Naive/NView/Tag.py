@@ -1,5 +1,5 @@
 from PySide6 import QtCore, QtWidgets, QtGui
-from Naive.NCore.Core import TagType, Size, Switch
+from ..NCore.Core import TagType, Size, Switch
 
 
 class Tag(QtWidgets.QLabel):

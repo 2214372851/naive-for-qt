@@ -15,3 +15,4 @@ from .Checkbox import Checkbox
 from .Input import Input, Textarea, InputNumber
 from .Radio import Radio
 from .Select import Select
+from .Upload import Upload, ApiUpload

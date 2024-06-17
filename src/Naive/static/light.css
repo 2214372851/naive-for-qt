@@ -13,6 +13,16 @@ QLabel {
   background-color: rgba(0, 0, 0, 0);
 }
 
+#main-upload {
+  border: 1px solid #E0E0E6;
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0);
+}
+#main-upload:hover {
+  border: 1px solid #18A058;
+  border-spacing: 1px;
+}
+
 #main-select {
   height: 28px;
   border: 1px solid #E0E0E6;

@@ -1,5 +1,5 @@
 from PySide6 import QtCore, QtWidgets, QtGui
-from Naive.NCore.Core import ButtonType, Switch, Size
+from ..NCore.Core import ButtonType, Switch, Size
 
 
 class Checkbox(QtWidgets.QCheckBox):

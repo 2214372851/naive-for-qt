@@ -18,6 +18,12 @@ QLabel {
   border-radius: 3px;
   background-color: rgba(0, 0, 0, 0);
 }
+#main-upload #title {
+  background: transparent;
+  color: rgb(51, 54, 57);
+  font-size: 16px;
+  font-weight: 500;
+}
 #main-upload:hover {
   border: 1px solid #18A058;
   border-spacing: 1px;

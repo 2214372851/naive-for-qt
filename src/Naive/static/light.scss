@@ -126,6 +126,14 @@ QLabel {
   border: 1px solid $BaseUploadBorderColor;
   border-radius: 3px;
   background-color: #0000;
+
+  #title {
+    background: transparent;
+    color: $BaseButtonFontColor;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
   &:hover {
     border: 1px solid $BaseUploadHoverColor;
     border-spacing: 1px;
@@ -177,6 +185,7 @@ QLabel {
   background-color: $BaseSelectMenusBackgroundColor;
   border: 1px solid $BaseSelectBorderColor;
 }
+
 #main-select QAbstractItemView::item {
   height: 30px;
 }

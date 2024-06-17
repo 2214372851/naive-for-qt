@@ -4,6 +4,7 @@ from pathlib import Path
 from PySide6 import QtWidgets, QtGui, QtCore
 from ..NView.Base import BashVBoxLayout, BashHBoxLayout
 from ..NCore.Core import OpenType
+from ..NUtils.NFunc import threadFunc
 
 
 class Upload(QtWidgets.QFrame):
@@ -68,3 +69,6 @@ class ApiUpload(Upload):
     def __init__(self, openType=OpenType.file):
         super().__init__(openType=openType)
         # TODO: 由于进度条未实现暂且延后开发该组件
+
+    def uploading(self, path: Path):
+        pass

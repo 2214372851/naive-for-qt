@@ -41,6 +41,8 @@ jobs:
           # 更新pyproject.toml中的版本号
           poetry version $NEW_VERSION
           echo "New version is $NEW_VERSION"
+          # 将新版本号保存为环境变量，用于后续操作
+          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
 
       - name: Commit and push version bump
         run: |
@@ -56,6 +58,10 @@ jobs:
       - name: Build Package
         run: |
           poetry build
+
+      - name: List dist directory
+        run: |
+          ls -la ./dist
 
       - name: Create GitHub Release
         if: github.event_name != 'pull_request'
@@ -76,6 +82,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./naive-for-qt/dist/naive-${{ env.NEW_VERSION }}-py3-none-any.whl
+          asset_path: ./dist/naive-${{ env.NEW_VERSION }}-py3-none-any.whl
           asset_name: naive-${{ env.NEW_VERSION }}-py3-none-any.whl
           asset_content_type: application/zip

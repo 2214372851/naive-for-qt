@@ -60,3 +60,10 @@ class TextType(Enum):
 class OpenType(Enum):
     file = 'file'
     folder = 'folder'
+
+
+class StateStyle(Enum):
+    default = 'default'
+    success = 'success'
+    warning = 'warning'
+    error = 'error'

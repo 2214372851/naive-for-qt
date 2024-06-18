@@ -1,9 +1,13 @@
+import time
 import typing
 from pathlib import Path
 
 from PySide6 import QtWidgets, QtGui, QtCore
-from ..NView.Base import BashVBoxLayout, BashHBoxLayout
-from ..NCore.Core import OpenType
+import requests
+from requests_toolbelt.multipart import encoder
+from . import ProgressBar
+from . import BashVBoxLayout, BashHBoxLayout
+from ..NCore.Core import OpenType, StateStyle
 from ..NUtils.NFunc import threadFunc
 
 
@@ -65,10 +69,57 @@ class Upload(QtWidgets.QFrame):
                 self._callable(path)
 
 
-class ApiUpload(Upload):
-    def __init__(self, openType=OpenType.file):
-        super().__init__(openType=openType)
-        # TODO: 由于进度条未实现暂且延后开发该组件
+class ApiUpload(QtWidgets.QFrame):
+    schedule = QtCore.Signal(encoder.MultipartEncoderMonitor)
 
+    def __init__(self, api: str, params: dict = None, cookies: dict = None, callBack: typing.Callable = None):
+        super().__init__()
+        self.api = api
+        self.params = params if params else {}
+        self.__cookies = cookies if cookies else {}
+        self.__upload_progress = ProgressBar()
+        self.__upload = Upload(openType=OpenType.file, callBack=self.initUpload)
+        self.__callBack = callBack
+        self.__start_time = 0
+        self.setupUi()
+
+    def setupUi(self):
+        self.__upload_progress.setFixedHeight(30)
+        self.schedule.connect(self.setValue)
+        self.setLayout(QtWidgets.QVBoxLayout())
+
+        self.layout().addWidget(self.__upload)
+        self.layout().addWidget(self.__upload_progress)
+
+    @threadFunc()
     def uploading(self, path: Path):
-        pass
+        try:
+            e = encoder.MultipartEncoder(
+                fields={'file': (path.name, path.open('rb'), 'application/x-zip-compressed'),
+                        **self.params}
+            )
+            m = encoder.MultipartEncoderMonitor(e, self.schedule.emit)
+            header = {"Content-Type": m.content_type}
+            result = requests.post(url=self.api, data=m, headers=header, cookies=self.__cookies)
+            if self.__callBack:
+                self.__callBack(result)
+        except requests.exceptions.HTTPError as http_err:
+            self.__upload_progress.setState(StateStyle.error)
+        except requests.exceptions.RequestException as req_err:
+            self.__upload_progress.setState(StateStyle.error)
+        finally:
+            self.__upload.setEnabled(True)
+
+    def initUpload(self, path: Path):
+        self.__upload_progress.reset()
+        self.__upload_progress.setState(StateStyle.default)
+        self.__upload.setEnabled(True)
+        self.__start_time = time.time()
+        self.uploading(path)
+
+    def setValue(self, e: encoder.MultipartEncoderMonitor):
+        self.__upload_progress.setValue(e.bytes_read)
+        value = e.bytes_read
+        self.__upload_progress.setValue(value)
+        if value == e.len:
+            self.__upload_progress.setState(StateStyle.success)

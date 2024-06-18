@@ -121,6 +121,34 @@ QLabel {
   background-color: #0000;
 }
 
+// main-progress-bar
+#main-progress-bar {
+  border: 1px solid rgb(224, 224, 230);
+  border-radius: 3px;
+  background: #fff;
+  text-align: center;
+
+  &::chunk {
+    border: none;
+  }
+
+  &::chunk[state=default] {
+    background-color: #368cf1;
+  }
+
+  &::chunk[state=success] {
+    background-color: #2fa968;
+  }
+
+  &::chunk[state=error] {
+    background-color: #d54461;
+  }
+
+  &::chunk[state=warning] {
+    background-color: #f1a936;
+  }
+}
+
 // main-upload
 #main-upload {
   border: 1px solid $BaseUploadBorderColor;

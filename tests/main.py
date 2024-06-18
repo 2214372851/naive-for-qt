@@ -637,7 +637,7 @@ class CarouselPage(QtWidgets.QWidget):
             # NView.InputNumber(),
             # NView.Radio(text='单选框'),
             # NView.Select(items=['a', 'b', 'c']),
-            NView.ApiUpload(),
+            NView.ApiUpload(api='a'),
         )
         card = NView.Card(
             title='基础',

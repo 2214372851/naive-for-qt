@@ -15,4 +15,5 @@ from .Checkbox import Checkbox
 from .Input import Input, Textarea, InputNumber
 from .Radio import Radio
 from .Select import Select
+from .ProgressBar import ProgressBar
 from .Upload import Upload, ApiUpload

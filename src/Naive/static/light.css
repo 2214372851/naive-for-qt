@@ -13,6 +13,28 @@ QLabel {
   background-color: rgba(0, 0, 0, 0);
 }
 
+#main-progress-bar {
+  border: 1px solid rgb(224, 224, 230);
+  border-radius: 3px;
+  background: #fff;
+  text-align: center;
+}
+#main-progress-bar::chunk {
+  border: none;
+}
+#main-progress-bar::chunk[state=default] {
+  background-color: #368cf1;
+}
+#main-progress-bar::chunk[state=success] {
+  background-color: #2fa968;
+}
+#main-progress-bar::chunk[state=error] {
+  background-color: #d54461;
+}
+#main-progress-bar::chunk[state=warning] {
+  background-color: #f1a936;
+}
+
 #main-upload {
   border: 1px solid #E0E0E6;
   border-radius: 3px;

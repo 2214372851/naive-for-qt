@@ -2,9 +2,11 @@ name: Python package
 
 on:
   push:
-    branches: [ "master" ]
+    branches:
+      - master
   pull_request:
-    branches: [ "master" ]
+    branches:
+      - master
 
 jobs:
   build-and-release:
@@ -16,23 +18,41 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v2
 
-    - name: Set up Python ${{ matrix.python-version }}
+    - name: Set up Python
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
 
+    - name: Install Poetry
+      run: |
+        python -m pip install poetry
+
+    - name: Bump version
+      run: |
+        # 读取当前版本号
+        CURRENT_VERSION=$(poetry version --short)
+        # 版本号递增逻辑，这里以递增补丁号为例
+        NEW_VERSION=$(echo $CURRENT_VERSION | awk -F. '{print $1 "." $2 "." ($3+1)}')
+        # 更新pyproject.toml中的版本号
+        poetry version $NEW_VERSION
+        echo "New version is $NEW_VERSION"
+
+    - name: Commit and push version bump
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git commit -am "Bump version to $NEW_VERSION [skip ci]"
+        git push origin HEAD:master
+
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        python -m pip install poetry
         poetry install
 
     - name: Build Package
       run: |
         poetry build
-      # 确保构建的包在dist目录下
 
     - name: Create GitHub Release
       if: github.event_name != 'pull_request'
@@ -41,8 +61,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
+        tag_name: v${{ env.NEW_VERSION }}
+        release_name: Release v${{ env.NEW_VERSION }}
         draft: false
         prerelease: false
 
@@ -53,6 +73,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./dist/naive-0.0.1-py3-none-any.whl
-        asset_name: naive-0.0.1-py3-none-any.whl
+        asset_path: ./dist/*.whl
+        asset_name: naive-${{ env.NEW_VERSION }}-py3-none-any.whl
         asset_content_type: application/zip

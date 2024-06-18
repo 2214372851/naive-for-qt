@@ -121,6 +121,51 @@ QLabel {
   background-color: #0000;
 }
 
+// main-table
+QTableWidget {
+  outline: none;
+  border: 1px solid rgb(239, 239, 245);
+  color: rgb(31, 34, 37);
+  background-color: #fff0; /*交替行的另一颜色*/
+  selection-background-color: #f7f7fa;
+  /*表头标题区域*/
+  &::section {
+    background: #fafafc;
+    color: rgb(31, 34, 37);
+    font: 14px;
+    font-weight: 500;
+    border: none;
+    border-bottom: 1px solid rgb(239, 239, 245);
+    border-left: 1px solid rgb(239, 239, 245);
+    border-right: 1px solid rgb(239, 239, 245);
+    outline: none;
+
+  }
+
+  &::item {
+    border-bottom: 1px solid rgb(239, 239, 245);
+    outline: none;
+    border-radius: 3px;
+    text-align: center;
+
+    &:hover {
+      color: rgb(31, 34, 37);
+    }
+
+    &:focus {
+      color: rgb(31, 34, 37);
+      outline: 0px;
+    }
+
+    &:selected {
+      color: rgb(31, 34, 37);
+    }
+  }
+
+
+}
+
+
 // main-progress-bar
 #main-progress-bar {
   border: 1px solid rgb(224, 224, 230);

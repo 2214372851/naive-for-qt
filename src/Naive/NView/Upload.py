@@ -2,11 +2,12 @@ import time
 import typing
 from pathlib import Path
 
-from PySide6 import QtWidgets, QtGui, QtCore
 import requests
+from PySide6 import QtWidgets, QtGui, QtCore
 from requests_toolbelt.multipart import encoder
+
+from . import BashVBoxLayout
 from . import ProgressBar
-from . import BashVBoxLayout, BashHBoxLayout
 from ..NCore.Core import OpenType, StateStyle
 from ..NUtils.NFunc import threadFunc
 

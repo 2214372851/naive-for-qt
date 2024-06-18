@@ -17,3 +17,4 @@ from .Radio import Radio
 from .Select import Select
 from .ProgressBar import ProgressBar
 from .Upload import Upload, ApiUpload
+from .Table import Table

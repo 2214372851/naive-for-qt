@@ -57,6 +57,10 @@ jobs:
         run: |
           poetry build
 
+      - name: List dist directory
+        run: |
+          ls -la ./dist
+
       - name: Create GitHub Release
         if: github.event_name != 'pull_request'
         uses: actions/create-release@v1

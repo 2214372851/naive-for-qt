@@ -41,6 +41,7 @@ jobs:
           # 更新pyproject.toml中的版本号
           poetry version $NEW_VERSION
           echo "New version is $NEW_VERSION"
+          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
 
       - name: Commit and push version bump
         run: |

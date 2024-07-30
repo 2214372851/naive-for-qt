@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "naive"
-version = "0.0.3"
+version = "0.0.4"
 description = "This is a style component library based on Python for Qt"
 authors = ["yunhai <bybxbwg@foxmail.com>"]
 readme = "README.md"

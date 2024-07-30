@@ -1,7 +1,7 @@
 from PySide6 import QtCore, QtGui, QtWidgets
 import sys
 import os
-from src import NCore, NUtils, NView
+from naive import NCore, NUtils, NView
 from functools import partial
 
 
@@ -281,25 +281,29 @@ class ButtonPage(QtWidgets.QWidget):
         show_widget.layout().setAlignment(QtCore.Qt.AlignmentFlag.AlignLeft)
         show_widget.layout().setSpacing(30)
 
-        info = QtWidgets.QLabel('使用 dashed 来使用虚线按钮。')
+        info = QtWidgets.QLabel('使用 禁用')
         info.setWordWrap(True)
         info_widget.layout().addWidget(info)
 
-        show_widget.layout().addWidget(
-            NView.Button('Default', style_type=NCore.Core.ButtonType.dashed_default)
-        )
-        show_widget.layout().addWidget(
-            NView.Button('Tertiary', style_type=NCore.Core.ButtonType.dashed_tertiary)
-        )
-        show_widget.layout().addWidget(
-            NView.Button('Info', style_type=NCore.Core.ButtonType.dashed_info)
-        )
-        show_widget.layout().addWidget(
-            NView.Button('Success', style_type=NCore.Core.ButtonType.dashed_success)
-        )
-        show_widget.layout().addWidget(
-            NView.Button('Warning', style_type=NCore.Core.ButtonType.dashed_warning)
-        )
+        btn = NView.Button('Default', style_type=NCore.Core.ButtonType.default)
+        btn.setDisabled(True)
+        show_widget.layout().addWidget(btn)
+
+        btn = NView.Button('Tertiary', style_type=NCore.Core.ButtonType.tertiary)
+        btn.setDisabled(True)
+        show_widget.layout().addWidget(btn)
+
+        btn = NView.Button('Info', style_type=NCore.Core.ButtonType.info)
+        btn.setDisabled(True)
+        show_widget.layout().addWidget(btn)
+
+        btn = NView.Button('Success', style_type=NCore.Core.ButtonType.success)
+        btn.setDisabled(True)
+        show_widget.layout().addWidget(btn)
+
+        btn = NView.Button('Warning', style_type=NCore.Core.ButtonType.warning)
+        btn.setDisabled(True)
+        show_widget.layout().addWidget(btn)
         info_widget.layout().addWidget(show_widget)
 
         card = NView.Card(
@@ -323,18 +327,18 @@ class ButtonPage(QtWidgets.QWidget):
         info_widget.layout().addWidget(info)
 
         show_widget.layout().addWidget(
-            NView.Button('Default',
-                         style_type=NCore.Core.ButtonType.dashed_default,
+            NView.Button('small',
+                         style_type=NCore.Core.ButtonType.default,
                          size=NCore.Core.Size.small)
         )
         show_widget.layout().addWidget(
-            NView.Button('Default',
-                         style_type=NCore.Core.ButtonType.dashed_default,
+            NView.Button('medium',
+                         style_type=NCore.Core.ButtonType.default,
                          size=NCore.Core.Size.medium)
         )
         show_widget.layout().addWidget(
-            NView.Button('Default',
-                         style_type=NCore.Core.ButtonType.dashed_default,
+            NView.Button('large',
+                         style_type=NCore.Core.ButtonType.default,
                          size=NCore.Core.Size.large)
         )
         info_widget.layout().addWidget(show_widget)
@@ -655,7 +659,7 @@ class CarouselPage(QtWidgets.QWidget):
         self.layout().addWidget(card)
 
 
-class TestWindow(NView.MainWindow):
+class TestWindow(NView.MicaWindow):
 
     def __init__(self):
         menus = [
@@ -685,7 +689,7 @@ class TestWindow(NView.MainWindow):
             ),
         ]
         super().__init__(
-            title='Test Naive Ui',
+            title='Test naive Ui',
             version='preview',
             icon='Icons:naive.svg',
             menus=menus
@@ -696,7 +700,7 @@ if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     window = TestWindow()
     window.show()
-    with open(r'../src\Naive\static\light.css', 'r', encoding='utf-8') as f:
-        a = f.read()
-        app.setStyleSheet(a)
+    # with open(r'../src/naive\static\light.css', 'r', encoding='utf-8') as f:
+    #     a = f.read()
+    #     app.setStyleSheet(a)
     sys.exit(app.exec())

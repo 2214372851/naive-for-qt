@@ -1,5 +1,5 @@
 from .Base import BashWindow, BashHBoxLayout, BashVBoxLayout
-from .Window import MainWindow, MenuItem
+from .Window import MainWindow, MenuItem, MicaWindow
 from .Card import Card
 from .Avatar import Avatar
 from .Scroll import Scroll

@@ -443,19 +443,6 @@ QTableWidget::item:selected {
   color: rgba(0, 0, 0, 0.5);
   border: 1px solid #e0e0e6;
 }
-#main-button[type=dashed-default]:hover {
-  border-color: #36AD6A;
-  color: #36AD6A;
-}
-#main-button[type=dashed-default]:pressed {
-  border-color: #0c7a43;
-  color: #0c7a43;
-}
-#main-button[type=dashed-default]:disabled {
-  background: rgba(0, 0, 0, 0);
-  color: rgba(0, 0, 0, 0.5);
-  border: 1px solid #e0e0e6;
-}
 #main-button[type|=tertiary] {
   border: none;
   background-color: rgba(38, 108, 179, 0.05);
@@ -469,9 +456,6 @@ QTableWidget::item:selected {
 #main-button[type=tertiary-tertiary] {
   color: #767c82;
 }
-#main-button[type|=dashed] {
-  border: 2px dashed #e0e0e6;
-}
 #main-button[type=secondary-tertiary] {
   border: none;
   background-color: rgba(96, 168, 241, 0.05);
@@ -484,19 +468,6 @@ QTableWidget::item:selected {
   background-color: rgba(96, 168, 241, 0.13);
 }
 #main-button[type=secondary-tertiary]:disabled {
-  background: rgba(0, 0, 0, 0);
-  color: rgba(0, 0, 0, 0.5);
-  border: 1px solid #e0e0e6;
-}
-#main-button[type=dashed-tertiary]:hover {
-  border-color: #36AD6A;
-  color: #36AD6A;
-}
-#main-button[type=dashed-tertiary]:pressed {
-  border-color: #0c7a43;
-  color: #0c7a43;
-}
-#main-button[type=dashed-tertiary]:disabled {
   background: rgba(0, 0, 0, 0);
   color: rgba(0, 0, 0, 0.5);
   border: 1px solid #e0e0e6;
@@ -534,23 +505,6 @@ QTableWidget::item:selected {
   background-color: rgba(32, 128, 240, 0.28);
 }
 #main-button[type=secondary-info]:disabled {
-  background: rgba(0, 0, 0, 0);
-  color: rgba(0, 0, 0, 0.5);
-  border: 1px solid #e0e0e6;
-}
-#main-button[type=dashed-info] {
-  border-color: #2080f0;
-  color: #2080f0;
-}
-#main-button[type=dashed-info]:hover {
-  border-color: #4098fc;
-  color: #4098fc;
-}
-#main-button[type=dashed-info]:pressed {
-  border-color: #1060c9;
-  color: #1060c9;
-}
-#main-button[type=dashed-info]:disabled {
   background: rgba(0, 0, 0, 0);
   color: rgba(0, 0, 0, 0.5);
   border: 1px solid #e0e0e6;
@@ -597,23 +551,6 @@ QTableWidget::item:selected {
   color: rgba(0, 0, 0, 0.5);
   border: 1px solid #e0e0e6;
 }
-#main-button[type=dashed-success] {
-  border-color: #18a058;
-  color: #18a058;
-}
-#main-button[type=dashed-success]:hover {
-  border-color: #36ad6a;
-  color: #36ad6a;
-}
-#main-button[type=dashed-success]:pressed {
-  border-color: #0c7a43;
-  color: #0c7a43;
-}
-#main-button[type=dashed-success]:disabled {
-  background: rgba(0, 0, 0, 0);
-  color: rgba(0, 0, 0, 0.5);
-  border: 1px solid #e0e0e6;
-}
 #main-button[type=tertiary-success] {
   color: #36ad6a;
 }
@@ -652,23 +589,6 @@ QTableWidget::item:selected {
   background-color: rgba(240, 160, 32, 0.28);
 }
 #main-button[type=secondary-warning]:disabled {
-  background: rgba(0, 0, 0, 0);
-  color: rgba(0, 0, 0, 0.5);
-  border: 1px solid #e0e0e6;
-}
-#main-button[type=dashed-warning] {
-  border-color: #f0a020;
-  color: #f0a020;
-}
-#main-button[type=dashed-warning]:hover {
-  border-color: #fcb040;
-  color: #fcb040;
-}
-#main-button[type=dashed-warning]:pressed {
-  border-color: #c97c10;
-  color: #c97c10;
-}
-#main-button[type=dashed-warning]:disabled {
   background: rgba(0, 0, 0, 0);
   color: rgba(0, 0, 0, 0.5);
   border: 1px solid #e0e0e6;
@@ -715,23 +635,6 @@ QTableWidget::item:selected {
   color: rgba(0, 0, 0, 0.5);
   border: 1px solid #e0e0e6;
 }
-#main-button[type=dashed-error] {
-  border-color: #d03050;
-  color: #d03050;
-}
-#main-button[type=dashed-error]:hover {
-  border-color: #de576d;
-  color: #de576d;
-}
-#main-button[type=dashed-error]:pressed {
-  border-color: #ab1f3f;
-  color: #ab1f3f;
-}
-#main-button[type=dashed-error]:disabled {
-  background: rgba(0, 0, 0, 0);
-  color: rgba(0, 0, 0, 0.5);
-  border: 1px solid #e0e0e6;
-}
 #main-button[type=tertiary-error] {
   color: #de576d;
 }
@@ -769,6 +672,10 @@ QTableWidget::item:selected {
   background: #E5F9F9;
 }
 
+#main-mica-window {
+  background: rgba(255, 255, 255, 0);
+}
+
 #menu-item {
   border-radius: 4px;
   border: none;
@@ -776,14 +683,13 @@ QTableWidget::item:selected {
 }
 #menu-item[type=select] {
   border-left: 3px solid #4098fc;
-  background-color: #e8eaf0;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 #menu-item:hover {
-  background: #e8eaf0;
+  background: rgba(0, 0, 0, 0.1);
 }
 
 #main-more-widget {
-  background: #E5F9F9;
   border: 1px solid #E9E9E9;
   border-radius: 14px;
 }
@@ -897,6 +803,9 @@ QScrollBar {
   background: rgba(0, 0, 0, 0);
   margin: 0;
   border-radius: 2px;
+}
+QScrollBar:hover {
+  background: rgba(0, 0, 0, 0.1);
 }
 QScrollBar:horizontal {
   height: 5px;

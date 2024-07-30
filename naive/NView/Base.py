@@ -1,7 +1,22 @@
+import sys
+from pathlib import Path
+
 from PySide6 import QtWidgets, QtCore, QtGui
+import win32mica
 
 
 class BashWindow(QtWidgets.QWidget):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.setLayout(BashVBoxLayout())
+        self.setAttribute(QtCore.Qt.WidgetAttribute.WA_TranslucentBackground)
+
+    def show(self):
+        super().show()
+        self.setStyleSheet(Path(__file__).parent.parent.joinpath("static", "light.css").read_text("utf-8"))
+
+
+class BashMainWindow(BashWindow):
     """Borderless window base class"""
 
     def __init__(self, parent=None):
@@ -14,7 +29,6 @@ class BashWindow(QtWidgets.QWidget):
             QtCore.Qt.WindowType.WindowMaximizeButtonHint
         )
         self.setMouseTracking(True)
-        self.setAttribute(QtCore.Qt.WidgetAttribute.WA_TranslucentBackground)
 
         self.base_shadow = QtWidgets.QGraphicsDropShadowEffect(self)
         self.base_shadow.setBlurRadius(15)
@@ -26,7 +40,6 @@ class BashWindow(QtWidgets.QWidget):
         self.top_edge = None
         self.right_edge = None
         self.left_edge = None
-        self.setLayout(BashVBoxLayout())
         self.layout().setContentsMargins(5, 5, 5, 5)
 
     def mouseMoveEvent(self, event):
@@ -99,6 +112,15 @@ class BashWindow(QtWidgets.QWidget):
     def showNormal(self):
         self.layout().setContentsMargins(5, 5, 5, 5)
         super().showNormal()
+
+
+class BashMicaWindow(BashWindow):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self._mica()
+
+    def _mica(self):
+        win32mica.ApplyMica(HWND=self.winId(), Theme=win32mica.MicaTheme.AUTO, Style=win32mica.MicaStyle.DEFAULT)
 
 
 class BashHBoxLayout(QtWidgets.QHBoxLayout):

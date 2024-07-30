@@ -1,12 +1,9 @@
 [tool.poetry]
-name = "Naive"
-version = "0.0.2"
+name = "naive"
+version = "0.0.3"
 description = "This is a style component library based on Python for Qt"
 authors = ["yunhai <bybxbwg@foxmail.com>"]
 readme = "README.md"
-packages = [
-    { include = "Naive", from = "src" }
-]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.13"
@@ -14,6 +11,7 @@ pyside6 = "^6.6.3.1"
 requests-toolbelt = "^1.0.0"
 requests = "^2.32.3"
 tablib = "^3.6.1"
+win32mica = "^3.0"
 
 [build-system]
 requires = ["poetry-core"]

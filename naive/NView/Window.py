@@ -1,11 +1,12 @@
 import os
 from functools import partial
 from typing import Callable, TypedDict, Union
+import win32mica
 
 from PySide6 import QtCore, QtGui, QtWidgets
 
-from ..NUtils.NIcon import init_icon
-from ..NView.Base import BashVBoxLayout, BashHBoxLayout, BashWindow
+from naive.NUtils.NIcon import init_icon
+from naive.NView.Base import BashVBoxLayout, BashHBoxLayout, BashMainWindow, BashMicaWindow
 
 
 class MainTitleBar(QtWidgets.QWidget):
@@ -217,7 +218,7 @@ class MenuItem(TypedDict):
     callback: Union[None, Callable]
 
 
-class MainWindow(BashWindow):
+class MainWindow(BashMainWindow):
     # 初始化图标库
     init_icon()
 
@@ -265,9 +266,49 @@ class MainWindow(BashWindow):
         main.layout().addWidget(body)
         self.layout().addWidget(main)
 
-    def paintEvent(self, event):
-        painter = QtGui.QPainter(self)
-        painter.setPen(QtGui.QPen(QtGui.QColor(255, 0, 0, 255), 1))
-        painter.setBrush(QtGui.QBrush(QtGui.QColor(255, 0, 0, 255)))
-        painter.drawText(0, 0, self.width(), self.height(), QtCore.Qt.AlignmentFlag.AlignCenter, "Naive")
-        painter.end()
+
+class MicaWindow(BashMicaWindow):
+    # 初始化图标库
+    init_icon()
+
+    def __init__(self, title: str, version: str, icon: str, menus: list[MenuItem] = None, parent=None):
+        super().__init__(parent)
+        self.content: MainContent | None = None
+        self.side_bar: MainSideBar | None = None
+        self.setupUi(title, version, icon)
+        self.setupMenus(menus)
+
+    def setupMenus(self, menus: list[MenuItem] = None):
+        if not menus: return
+        for index, menu in enumerate(menus):
+            self.side_bar.add(
+                menu.get('title'),
+                menu.get('icon'),
+                menu.get('callback') if menu.get('callback') else partial(self.content.to, index)
+            )
+            menu.get('page') and self.content.addWidget(menu.get('page'))
+
+    def setupUi(self, title: str, version: str, icon: str):
+        self.resize(800, 500)
+        self.setWindowTitle(title)
+        self.setWindowIcon(QtGui.QIcon(icon))
+        self.setWindowIconText(title)
+        main = QtWidgets.QFrame(self)
+        main.setObjectName('main-mica-window')
+        main.setLayout(BashVBoxLayout())
+        body = QtWidgets.QWidget()
+        body.setObjectName('main-mica-body')
+        body.enterEvent = super().enterEvent
+        body.setLayout(BashHBoxLayout())
+
+        self.side_bar = MainSideBar(self)
+        self.side_bar.enterEvent = super().enterEvent
+        body.layout().addWidget(self.side_bar)
+
+        self.content = MainContent()
+        self.content.enterEvent = super().enterEvent
+        body.layout().addWidget(self.content)
+
+        main.layout().addWidget(body)
+        self.layout().addWidget(main)
+

@@ -10,7 +10,7 @@ $BaseScrollHoverColor: rgba(0, 0, 0, .4);
 $BaseVersionFontColor: #7a7d7e;
 $BaseFontSize: 14px;
 $BaseMenuBorderColor: #4098fc;
-$BaseMenuHoverColor: #e8eaf0;
+$BaseMenuHoverColor: rgba(0, 0, 0, .1);
 $BaseBodyBorderColor: #EAE5D6;
 $BaseCardColor: #fff; // Card背景色
 $BaseCardActionColor: #FAFAFC; // Card Action 颜色
@@ -661,24 +661,6 @@ QTableWidget {
     }
   }
 
-  &[type="dashed-default"] {
-
-    &:hover {
-      border-color: $DefaultBorderHover;
-      color: $DefaultBorderHover;
-    }
-
-    &:pressed {
-      border-color: $DefaultActiveHover;
-      color: $DefaultActiveHover;
-    }
-
-    &:disabled {
-      background: #0000;
-      color: rgba($BaseFontColor, $alphaDisabled);
-      border: 1px solid #e0e0e6;
-    }
-  }
 
   &[type|="tertiary"] {
     border: none;
@@ -697,9 +679,6 @@ QTableWidget {
     color: $TertiaryFontColor;
   }
 
-  &[type|="dashed"] {
-    border: 2px dashed $DefaultBorder;
-  }
 
   &[type="secondary-tertiary"] {
     border: none;
@@ -721,24 +700,6 @@ QTableWidget {
     }
   }
 
-  &[type="dashed-tertiary"] {
-
-    &:hover {
-      border-color: $TertiaryBorderHover;
-      color: $TertiaryBorderHover;
-    }
-
-    &:pressed {
-      border-color: $TertiaryActiveHover;
-      color: $TertiaryActiveHover;
-    }
-
-    &:disabled {
-      background: #0000;
-      color: rgba($BaseFontColor, $alphaDisabled);
-      border: 1px solid #e0e0e6;
-    }
-  }
 
   &[Strong='true'] {
     font-weight: 600;
@@ -785,26 +746,6 @@ QTableWidget {
         border: 1px solid #e0e0e6;
       }
     }
-    &[type="dashed-#{$name}"] {
-      border-color: $default;
-      color: $default;
-
-      &:hover {
-        border-color: $hover;
-        color: $hover;
-      }
-
-      &:pressed {
-        border-color: $action;
-        color: $action;
-      }
-
-      &:disabled {
-        background: #0000;
-        color: rgba($BaseFontColor, $alphaDisabled);
-        border: 1px solid #e0e0e6;
-      }
-    }
     &[type="tertiary-#{$name}"] {
       color: $hover;
 
@@ -837,6 +778,10 @@ QTableWidget {
   background: $BaseWindowColor;
 }
 
+#main-mica-window {
+  background: rgba(255, 255, 255, 0);
+}
+
 // MainSideBar
 
 #menu-item {
@@ -855,7 +800,6 @@ QTableWidget {
 }
 
 #main-more-widget {
-  background: $BaseWindowColor;
   border: 1px solid $MainTitleBarHoverColor;
   border-radius: 14px;
 }
@@ -985,9 +929,14 @@ QTableWidget {
 
 //noinspection CssInvalidPseudoSelector
 QScrollBar {
-  background: #0000;
+  background: rgb(0, 0, 0, 0);
+
   margin: 0;
   border-radius: 2px;
+
+  &:hover {
+    background: rgb(0, 0, 0, .1);
+  }
 
   &:horizontal {
     height: 5px;
